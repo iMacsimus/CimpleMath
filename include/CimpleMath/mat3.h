@@ -38,11 +38,6 @@ mat3 make_mat3_9(
     }; 
 }
 
-#define make_mat3(...) \
-    (_Generic(&(float[]){__VA_ARGS__} \
-    , float(*)[1]: make_mat3_1 \
-    , float(*)[9]: make_mat3_9)(__VA_ARGS__))
-
 static inline
 mat3 m3a(mat3 a, mat3 b) 
 { 

@@ -23,30 +23,15 @@ vec2 make_vec2_1(float value) { return (vec2){{value, value}}; }
 static inline 
 vec2 make_vec2_2(float x, float y) { return (vec2){{x, y}}; }
 
-#define make_vec2(...) \
-    (_Generic( &(float[]){__VA_ARGS__} \
-    , float(*)[1]: make_vec2_1 \
-    , float(*)[2]: make_vec2_2)(__VA_ARGS__))
-
 static inline
 vec3 make_vec3_1(float value) { return (vec3){{value, value, value}}; }
 static inline
 vec3 make_vec3_3(float x, float y, float z) { return (vec3){{x, y, z}}; }
 
-#define make_vec3(...) \
-    (_Generic( &(float[]){__VA_ARGS__} \
-    , float(*)[1]: make_vec3_1 \
-    , float(*)[3]: make_vec3_3)(__VA_ARGS__))
-
 static inline
 vec4 make_vec4_1(float value) { return (vec4){{value, value, value, value}}; }
 static inline 
 vec4 make_vec4_4(float x, float y, float z, float w) { return (vec4){{x, y, z, w}}; }
-
-#define make_vec4(...) \
-    (_Generic( &(float[]){__VA_ARGS__} \
-    , float(*)[1]: make_vec4_1 \
-    , float(*)[4]: make_vec4_4)(__VA_ARGS__))
 
 //////////////////////////////////////////////////////////////////////////////
 

@@ -1,6 +1,39 @@
-#pragma once
+#pragma once 
+
 #include "vec.h"
 #include "mat4.h"
+
+#if __STDC__ && (__STDC_VERSION__ >= 201112L || GENERIC_SUPPORTED)
+
+#define make_vec2(...) \
+    (_Generic( &(float[]){__VA_ARGS__} \
+    , float(*)[1]: make_vec2_1 \
+    , float(*)[2]: make_vec2_2)(__VA_ARGS__))
+
+#define make_vec3(...) \
+    (_Generic( &(float[]){__VA_ARGS__} \
+    , float(*)[1]: make_vec3_1 \
+    , float(*)[3]: make_vec3_3)(__VA_ARGS__))
+
+#define make_vec4(...) \
+    (_Generic( &(float[]){__VA_ARGS__} \
+    , float(*)[1]: make_vec4_1 \
+    , float(*)[4]: make_vec4_4)(__VA_ARGS__))
+
+#define make_mat2(...) \
+    (_Generic(&(float[]){__VA_ARGS__} \
+    , float(*)[1]: make_mat2_1 \
+    , float(*)[4]: make_mat2_4)(__VA_ARGS__))
+
+#define make_mat3(...) \
+    (_Generic(&(float[]){__VA_ARGS__} \
+    , float(*)[1]: make_mat3_1 \
+    , float(*)[9]: make_mat3_9)(__VA_ARGS__))
+
+#define make_mat4(...) \
+    (_Generic(&(float[]){__VA_ARGS__} \
+    , float(*)[1]: make_mat4_1 \
+    , float(*)[16]: make_mat4_16)(__VA_ARGS__))
 
 #define plus , ADD ,
 #define minus , SUB ,
@@ -146,3 +179,5 @@ void DO_NOTHING() {}
         , vec3: fdv3 \
         , vec4: fdv4 \
         , default: DO_NOTHING)))(X, Y)
+
+#endif

@@ -19,11 +19,6 @@ mat2 make_mat2_4(float a00, float a01, float a10, float a11)
     return (mat2){{make_vec2_2(a00, a10), make_vec2_2(a01, a11)}};
 }
 
-#define make_mat2(...) \
-    (_Generic(&(float[]){__VA_ARGS__} \
-    , float(*)[1]: make_mat2_1 \
-    , float(*)[4]: make_mat2_4)(__VA_ARGS__))
-
 static inline
 mat2 m2a(mat2 a, mat2 b) 
 { 

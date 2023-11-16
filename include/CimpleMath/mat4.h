@@ -42,11 +42,6 @@ mat4 make_mat4_16(
     }; 
 }
 
-#define make_mat4(...) \
-    (_Generic(&(float[]){__VA_ARGS__} \
-    , float(*)[1]: make_mat4_1 \
-    , float(*)[16]: make_mat4_16)(__VA_ARGS__))
-
 static inline
 mat4 m4a(mat4 a, mat4 b) 
 { 
