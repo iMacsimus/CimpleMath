@@ -180,4 +180,21 @@ void DO_NOTHING() {}
         , vec4: fdv4 \
         , default: DO_NOTHING)))(X, Y)
 
+#define transpose(M) \
+    (_Generic((M) \
+    , mat2: m2t \
+    , mat3: m3t \
+    , mat4: m4t)(M))
+
+#define invert(M) \
+    (_Generic((M) \
+    , mat2: m2i \
+    , mat3: m3i \
+    , mat4: m4i)(M))
+
+#define algebraic_complement(M, i, j) \
+    (_Generic((M) \
+    , mat3: m3_alg_compl \
+    , mat4: m4_alg_compl)(M, i, j))
+
 #endif

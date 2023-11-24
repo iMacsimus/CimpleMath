@@ -11,7 +11,7 @@ int main(void)
     vec2 res = f( m mul v div f(m mul v) );
     printf("%f %f\n", res.x, res.y);
     mat4 m2 = make_mat4(0.5f);
-    m2 = m4i(m2);
+    m2 = invert(m2);
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 4; ++j) {
             printf("%f ", m2.d[j][i]);
